@@ -1,0 +1,36 @@
+
+document idris packaging stuff;
+  what are the runtime requirements of
+    idris
+    an idris lib
+    an idris compiled binary
+
+update with more recent upstream patches, compare issue list, check 1:1 functionality
+
+
+what does idris do in pkgs/top-level/release.nix?
+redo all-packages
+
+idris-wrapper
+README.md
+default.nix
+TODO.md
+
+get idris modules again with the right perms
+
+i dont understand whats going on with the builtin/_ stuff
+
+for packages with root incompatibilities, who is responsible for checking and aborting? the composer? the root? the package?
+similar: for languages with different interpreters but a common language should there be separate package ses for each interpreter or a common one with the above mentioned check? (add to design considerations note)
+
+todo document to spec that nix shell and nix build should work
+
+automatic -p flags? (does this get ignored for .ipkg stuff?)
+
+
+start taking notes on how to write an integrable language package manager https://www.hadean.com/blog/managing-rust-dependencies-with-nix-part-is
+
++  #TODO maybe this should be accessible from inside the overlay system? - ! this might even simplify the code (?)
+   extender = recset: rec {
+     extend = overlay:
+       let extended = extends overlay recset; #Merge the overlay into the recursive set, return the next fix point after a recursive call
